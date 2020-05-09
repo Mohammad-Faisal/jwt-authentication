@@ -1,6 +1,6 @@
 const User = require('../models/users');
-var passport = require('passport');
-
+const jwt = require('jsonwebtoken');
+const authenticationModule = require('../authenticate');
 
 module.exports = {
     register: async (req, res) => {
@@ -16,10 +16,16 @@ module.exports = {
 
     login: async (req, res) => {
 
-        const authenticate = User.authenticate();
-        const {user , error} = await authenticate(req.body.username, req.body.password);
+
+        const userObject = await User.findOne({username : req.body.username}).catch(err => res.json(err))
+        if(!userObject)res.json({message :"User not Found"})
+
+        const {user , error} = await User.authenticate()(req.body.username, req.body.password);
         if (error) res.json(error);
-        res.json(user)
+
+        const token = authenticationModule.getToken({_id : userObject._id});
+
+        res.json({token})
 
     },
 

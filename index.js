@@ -16,7 +16,6 @@ const mongoose = require('mongoose');
 
 //for login
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 const authenticate = require('./authenticate');
 
 
@@ -32,7 +31,7 @@ if(environment !== 'production'){
     app.use(logger('dev'));
 }
 
-mongoose.connect('mongodb://localhost:27017/jwt-authentication');
+mongoose.connect(process.env.MONGO_LOCAL_CONN_URL);
 mongoose.set('useCreateIndex', true);
 
 //for login
