@@ -24,14 +24,13 @@ app.use(bodyParser.urlencoded({
     extended :true
 }))
 app.use(passport.initialize());
-app.use(passport.session());
 
 
 if(environment !== 'production'){
     app.use(logger('dev'));
 }
 
-mongoose.connect(process.env.MONGO_LOCAL_CONN_URL);
+mongoose.connect(process.env.MONGO_LOCAL_CONN_URL) ,  { useNewUrlParser: true };
 mongoose.set('useCreateIndex', true);
 
 //for login

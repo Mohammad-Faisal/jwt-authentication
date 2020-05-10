@@ -1,3 +1,5 @@
+//we dont use it as we are using jwt-passport
+
 const jwt = require('jsonwebtoken');
 
 module.exports = {

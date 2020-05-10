@@ -5,11 +5,7 @@ const authenticationModule = require('../authenticate');
 module.exports = {
     register: async (req, res) => {
 
-        const response = await User.register({ username: req.body.username, active: true }, req.body.password).catch(err => res.json(err));
-       
-        console.log(response);
-        if (err) res.json(err);
-        console.log("New User Created  ", user);
+        const user = await User.register({ username: req.body.username, active: true }, req.body.password).catch(err => res.json(err));
         res.json(user);
 
     },
@@ -29,8 +25,8 @@ module.exports = {
 
     },
 
-    getusers: (req, res) => {
-        console.log(req.body);
+    getusers:async (req, res) => {
+        console.log("the user who is trying to access this documenst are  " , req.user);
         User.find({}, (err, users) => {
             res.json(users);
         });

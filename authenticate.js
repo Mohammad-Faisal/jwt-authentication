@@ -7,14 +7,15 @@ var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 var jwt = require('jsonwebtoken');
 
+
+//we need this to register user
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
 exports.getToken = function (user) {
-    return jwt.sign(user, process.env.JWT_SECRET,
-        { expiresIn: 3600 });
+    return jwt.sign(user, process.env.JWT_SECRET, { expiresIn: 3600 });
 };
 
 var opts = {};
