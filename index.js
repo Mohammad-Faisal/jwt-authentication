@@ -13,12 +13,13 @@ const stage = require('./config')[environment];
 const routes = require('./routes/index.js');
 
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 //for login
 const passport = require('passport');
 const authenticate = require('./authenticate');
 
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended :true

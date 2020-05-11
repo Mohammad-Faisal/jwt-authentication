@@ -25,7 +25,5 @@ const upload = multer({storage : storage , fileFilter:imageFileFilter});
 
 module.exports = (router) => {
     router.route('/uploadImage')
-    //.post(validateToken , upload.single('imageFile') , uploadController.uploadFile);
     .post(upload.single('imageFile') , uploadController.uploadFile);
-
 }
