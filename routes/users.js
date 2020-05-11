@@ -1,5 +1,5 @@
 const userController = require('../controllers/users');
-const validateToken = require('../authenticate').verifyUser;
+const validateToken  = require('../authenticate').verifyUser;
 
 module.exports = (router) => {
     router.route('/getusers')

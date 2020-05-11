@@ -8,8 +8,7 @@ module.exports = {
 
         aws.config.update({
             accessKeyId: 'AKIAIP6NYMTRYQEBYMWQ',
-            secretAccessKey: '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'
-            ,
+            secretAccessKey: '8H//ZBsWe01uZ7+Ndrr0SasdTj4kG0aTpow7P8jx',
             region: 'eu-west-1'
         })
         var s3 = new aws.S3()
